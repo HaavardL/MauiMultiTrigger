@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiMultitrigger.MainPage">
+
+    <HorizontalStackLayout>
+        <Label Text="MultiTrigger:" VerticalOptions="Center" />
+        <Entry x:Name="MyEntry" Text="" Margin="5,0,0,0" VerticalOptions="Center" />
+        <Button Text="ClickMe" Margin="5,0,0,0" VerticalOptions="Center">
+            <Button.Triggers>
+                <MultiTrigger TargetType="Button">
+                    <MultiTrigger.Conditions>
+                        <BindingCondition Binding="{Binding Source={x:Reference MyEntry}, Path=Text}" Value="999" />
+                        <PropertyCondition Property="Text" Value="ClickMe" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="IsEnabled" Value="False" />
+                    <Setter Property="Text" Value="Do not click" />
+                </MultiTrigger>
+            </Button.Triggers>
+        </Button>
+    </HorizontalStackLayout>
+
+</ContentPage>
